@@ -1,10 +1,20 @@
+-- the amount of steps the miner will move forward
 local steps = 9
+-- the time the miner will wait after moving a piston the pushed or standard state
 local waitTime = 1
+-- since the pulling piston can be shortly activated while the pushing piston is still running back
+-- to its starting position, this immediate wait time specified the wait time between both pistons
 local piston_immediate = 0.5
+-- the time the miner will wait for the mining process to finish
+-- this is more on the liberal side, as some ores take long to mine so the process could take longer
+-- than the average time
 local digDownTime = 300
+-- the pullUp time includes pulling the mining contraption up and transfering all items to the chests
 local pullUpTime = 50
+-- this is the monitor peripheral attached to the top to see output from the programm
 local monitor = peripheral.wrap("top")
 monitor.setTextScale(0.5)
+-- this is the line the monitor is currently writing to
 Line = 1
 
 ---Writes a text to the monitor and moves the cursor to the next line
