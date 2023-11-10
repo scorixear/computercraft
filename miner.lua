@@ -1,6 +1,8 @@
 steps = 9
 waitTime = 1
-digDown_time = 
+piston_immediate = 0.5
+digDownTime = 300
+pullUpTime = 50
 function piston(side) do
     redstone.setOutput(side, true)
     os.sleep(waitTime)
@@ -10,7 +12,7 @@ end
 function move(c) do
     print("Moving forward"..c)
     piston("back")
-    os.sleep(0.5)
+    os.sleep(piston_immediate)
     piston("left")
     os.sleep(waitTime)
 end
@@ -18,10 +20,10 @@ end
 function dig() do
     print("Start digging")
     redstone.setOutput("front", true)
-    os.sleep(300)
+    os.sleep(dig_down_time)
     print("Retrieving digger")
     redstone.setOutput("front", false)
-    os.sleep(50)
+    os.sleep(pullUpTime)
 end
 
 while true do 
